@@ -8,7 +8,11 @@
 				<h4 class="modal-title">Eliminar Cliente</h4>
 		</div>
 		<div class="modal-body">
+<<<<<<< HEAD
 			<p>Desea eliminar el cliente?</p>
+=======
+			<p>Desea eliminar el Cliente?</p>
+>>>>>>> afaa1ffcd9d2a747cac428670c1eceba4829a809
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
