@@ -4,7 +4,7 @@ namespace cgvVentas\Http\Requests;
 
 use cgvVentas\Http\Requests\Request;
 
-class PersonaFormRequest extends Request
+class IngresoFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,13 @@ class PersonaFormRequest extends Request
     public function rules()
     {
         return [
-            'nombre'=>'required|max:100',
-            'tipo_documento'=>'required|max:15',
-            'num_documento'=>'required|numeric',
-            'direccion'=>'max:70',
-            'telefono'=>'numeric',
-            'email'=>'max:50'
+            'idproveedor'=>'required',
+            'tipo_comprobante'=>'required|max:20',
+            'num_comprobante'=>'required|max:10',
+            'idarticulo'=>'required',
+            'cantidad'=>'required',
+            'precio_compra'=>'required',
+            'precio_venta'=>'required'
         ];
     }
 }
