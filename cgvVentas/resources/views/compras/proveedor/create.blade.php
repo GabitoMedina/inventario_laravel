@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<h3>Nueva Artículo</h3>
+			<h3>Nueva Proveedor</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -15,7 +15,7 @@
 		</div>
 	</div>
 
-			{!!Form::open(array('url'=>'cgv/articulo','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
+			{!!Form::open(array('url'=>'compras/proveedor','method'=>'POST','autocomplete'=>'off'))!!}
 			{{Form::token()}}
 	<div class="row">
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -26,47 +26,44 @@
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label>Categoria</label>
-				<select name="idcategoria" class="form-control">
-					@foreach ($categorias as $cat)
-						<option value="{{$cat->idcategoria}}">{{$cat->nombre}}</option>
-					@endforeach
+				<label for="direccion">Dirección</label>
+				<input type="text" name="direccion" value="{{old('direccion')}}" class="form-control" placeholder="Dirección">
+			</div>
+		</div>
+
+		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+			<div class="form-group">
+				<label for="tipo_documento">Documento</label>
+				<select name="tipo_documento" class="form-control">
+					<option value="CI">CI</option>
+					<option value="RUC">RUC</option>
 				</select>
 			</div>
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="codigo">Código</label>
-				<input type="text" name="codigo" required value="{{old('codigo')}}" class="form-control" placeholder="Código del producto">
+				<label for="num_documento">Número Documento</label>
+				<input type="text" name="num_documento"  value="{{old('num_documento')}}" class="form-control" placeholder="Número del documento">
 			</div>
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="stock">Stock</label>
-				<input type="text" name="stock" required value="{{old('stock')}}" class="form-control" placeholder="Stock del producto">
+				<label for="telefono">Teléfono</label>
+				<input type="text" name="telefono" value="{{old('telefono')}}" class="form-control" placeholder="Teléfono">
 			</div>
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="descripcion">Descripción</label>
-				<input type="text" name="descripcion" value="{{old('descripcion')}}" class="form-control" placeholder="Descripción del producto">
-			</div>
-		</div>
-		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-			<div class="form-group">
-				<label for="imagen">Imagen</label>
-				<input type="file" name="imagen"  class="form-control" >
+				<label for="email">Email</label>
+				<input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
 			</div>
 		</div>
 	
 		<dir class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
 				<button class="btn btn-primary" type="submit">Guardar</button>
-				<a class="btn btn-danger" href="{{ route('cgv.articulo.index') }}"> Cancelar</a>
-				<!-- <button class="btn btn-danger" href="{{ route('cgv.articulo.index') }}" type="reset">Cancelar</button> -->
+				<button class="btn btn-danger" type="reset">Cancelar</button>
 			</div>
-			 
-            
 		</div>
 	</div>
 			{!!Form::close()!!}
