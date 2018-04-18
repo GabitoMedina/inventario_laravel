@@ -20,52 +20,88 @@
 	<div class="row">
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="nombre">Nombre</label>
-				<input type="text" name="nombre" required value="{{old('nombre')}}" class="form-control" placeholder="Nombre">
+				<label for="proveedor">Proveedor</label>
+				<select name="proveedor" id="proveedor" class="form-control selectpicker" data-live-search="true">
+					@foreach ($personas as $persona)
+					  <option value="{{$persona->idpersona}}">{{$persona->nombre}}</option>
+					@endforeach
+				</select>
+				
 			</div>
 		</div>
-		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+		<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 			<div class="form-group">
-				<label for="direccion">Dirección</label>
-				<input type="text" name="direccion" value="{{old('direccion')}}" class="form-control" placeholder="Dirección">
+				<label >Comprobante</label>
+				<select name="tipo_comprobante" class="form-control">
+					<option value="Boleta">Boleta</option>
+					<option value="Factura">Factura</option>
+					<option value="Ticket">Ticket</option>
+				</select>
+				
 			</div>
 		</div>
 
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="tipo_documento">Documento</label>
-				<select name="tipo_documento" class="form-control">
-					<option value="CI">CI</option>
-					<option value="RUC">RUC</option>
-				</select>
+				<label for="num_comprobante">Num Comprobante</label>
+				<input type="text" name="num_comprobante"  value="{{old('num_comprobante')}}" class="form-control" placeholder="Número Comprobante">
 			</div>
 		</div>
-		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-			<div class="form-group">
-				<label for="num_documento">Número Documento</label>
-				<input type="text" name="num_documento"  value="{{old('num_documento')}}" class="form-control" placeholder="Número del documento">
+	</div>
+		<div class="row">
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<div class="col-lg-3 col-sm-3 col-xs-12">
+						<div class="form-group">
+							<label>Articulo</label>
+							<select name="pidarticulo" class="form-control selectpicker" id="pidarticulo" data-live-search="true">
+								@foreach($articulos as $articulo)
+								<option value="{{$articulo->idarticulo}}">{{$articulo->articulo}}</option>
+								@endforeach
+							</select>
+
+						</div>
+
+					</div>
+					<div class="col-lg-3 col-sm-3 col-xs-12">
+					<div class="form-group">
+						<label for="cantidad">Cantidad</label>
+						<input type="number" name="pcantidad" id="pcantidad" class="form-control" placeholder="cantidad">
+					</div>
+					</div>
+
+					<div class="col-lg-3 col-sm-3 col-xs-12">
+					<div class="form-group">
+						<label for="precio_compra">Precio Compra</label>
+						<input type="number" name="pprecio_compra" id="pprecio_compra" class="form-control" placeholder="P. Compra">				
+					</div>
+					</div>
+
+					<div class="col-lg-3 col-sm-3 col-xs-12">
+					<div class="form-group">
+						<label for="precio_venta">Precio Venta</label>
+						<input type="number" name="pprecio_venta" id="pprecio_venta" class="form-control" placeholder="P. Venta">
+						
+					</div>
+
+					</div>
+
+
+					
+				</div>
 			</div>
 		</div>
-		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-			<div class="form-group">
-				<label for="telefono">Teléfono</label>
-				<input type="text" name="telefono" value="{{old('telefono')}}" class="form-control" placeholder="Teléfono">
-			</div>
-		</div>
-		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-			<div class="form-group">
-				<label for="email">Email</label>
-				<input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
-			</div>
-		</div>
+
+				
 	
-		<dir class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
 				<button class="btn btn-primary" type="submit">Guardar</button>
 				<button class="btn btn-danger" type="reset">Cancelar</button>
 			</div>
-		</div>
-	</div>
+			</div>
+		
+
 			{!!Form::close()!!}
 
 @endsection

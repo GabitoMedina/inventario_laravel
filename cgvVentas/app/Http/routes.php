@@ -14,6 +14,13 @@
 Route::get('/', function () {
     return view('layouts.admin');
 });
+Route::get('prf', function () {
+    return view('proformas.index');
+});
+Route::get('prfc', function () {
+    return view('proformas.create');
+});
+
 Route::resource('cgv/categoria','CategoriaController');
 Route::resource('cgv/articulo','ArticuloController');
 Route::resource('ventas/cliente','ClienteController');
