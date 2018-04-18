@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 Route::resource('cgv/categoria','CategoriaController');
 Route::resource('cgv/articulo','ArticuloController');
+Route::resource('ventas/cliente','ClienteController');
+Route::resource('compras/proveedor','ProveedorController');
+Route::resource('compras/ingreso','IngresoController');
