@@ -9,7 +9,7 @@
 					<div class="table-responsive">
 						<table class="table table-striped table-bordered table-condensed table-hover">
 							<thead>
-								<!--<th>Id</th>-->
+								<th>Id</th>
 								<th>Fecha</th>
 								<th>Proveedor</th>
 								<th>Comprobante</th>
@@ -21,7 +21,7 @@
 
 							@foreach($ingresos as $ing)
 							<tr>
-								<!--!<td>{{ $ing->idingreso}}</td>-->
+								!<td>{{ $ing->idingreso}}</td>
 								<td>{{ $ing->fecha}}</td>
 								<td>{{ $ing->nombre}}</td>
 								<td>{{ $ing->tipo_comprobante.': '.$ing->num_comprobante}}</td>
