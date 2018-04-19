@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ingreso extends Model
 {
     protected $table='ingreso';
-    protected $primaryKey = "idingreso";
+    protected $primaryKey = 'idingreso';
 
     public $timestamps=false;
 
@@ -20,3 +20,4 @@ class Ingreso extends Model
     	'estado'];
     	protected $guarded =[]  ;
 
+}
