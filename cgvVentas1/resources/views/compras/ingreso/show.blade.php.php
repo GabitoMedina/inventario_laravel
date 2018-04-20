@@ -44,21 +44,31 @@
 								<th>Subtotal</th>
 								
 							</thead>
-
-							<tbody>
-								@foraech
-								
-							</tbody>
-
 							<tfoot>
 								
 								<th></th>
 								<th></th>
 								<th></th>
 								<th></th>
-								<th><h4 id="total">$/. 0.00</h4></th>
+								<th><h4 id="total">{{$ingreso->total}}</h4></th>
 								
 							</tfoot>
+
+							<tbody>
+								@foraech($detalles as $det)
+									<tr>
+										<td>{{$det->articulo}}</td>
+										<td>{{$det->cantidad}}</td>
+										<td>{{$det->precio_compra}}</td>
+										<td>{{$det->precio_venta}}</td>
+										<td>{{$det->cantidad*$det->precio_compra}}</td>
+									</tr>
+
+								@endforeach
+								
+							</tbody>
+
+							
 
 							
 						</table>
