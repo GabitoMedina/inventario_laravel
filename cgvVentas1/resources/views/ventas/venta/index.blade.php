@@ -21,12 +21,12 @@
 
 							@foreach ($ventas as $ven)
 							<tr>
-								<!-- <td>{{ $ing->idingreso}}</td> -->
+								
 								<td>{{ $ven->fecha}}</td>
 								<td>{{ $ven->nombre}}</td>
 								<td>{{ $ven->tipo_comprobante.': '.$ven->num_comprobante}}</td>
 								<td>{{ $ven->iva}}</td>
-								<td>{{ $ven->total}}</td>
+								<td>{{ $ven->total_venta}}</td>
 								<td>{{ $ven->estado}}</td>
 								<td> <a href="{{URL::action('VentaController@show',$ven->idventa)}}"><button class="btn btn-primary">Detalles</button></a>
 									<a href="" data-target="#modal-delete-{{$ven->idventa}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
