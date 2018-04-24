@@ -85,7 +85,7 @@
             <li class="header"></li>
 
             <li class="treeview">
-              <a href="#">
+              <a href="{{ route ('proformas.index') }}">
                 <i class="fa fa-folder"></i> <span>Proforma</span>
                 <!-- <small class="label pull-right bg-red">PDF</small> -->
               </a>
