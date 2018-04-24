@@ -17,5 +17,6 @@ class DetalleIngreso extends Model
     	'cantidad',
     	'precio_compra',
     	'precio_venta'];
-    	protected $guarded =[]  ;
+        protected $guarded =[
+        ];
 }

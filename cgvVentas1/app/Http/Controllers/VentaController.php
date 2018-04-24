@@ -42,7 +42,7 @@ class VentaController extends Controller
         $personas=DB::table('persona')->where('tipo_persona','=','Cliente')->get();
         $articulos = DB::table('articulo as art')
         ->join('detalle_ingreso as di','art.idarticulo','=','di.idarticulo')
-        ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo','=','art.stock',DB::raw('avg(di.precio_venta)as precio_promedio'))
+        ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo','art.stock',DB::raw('avg(di.precio_venta)as precio_promedio'))
         ->where('art.estado','=','Activo')
         ->where('art.stock','>','0')
         ->groupBy('artticulo','art.idarticulo','art.stock')
@@ -52,9 +52,9 @@ class VentaController extends Controller
 
      public function store (VentaFormRequest $request)
     {
-        try{
+        try{ 
             DB::beginTransaction();
-            $ingreso=new Venta;
+            $venta=new Venta;
             $venta->idcliente=$request->get('idcliente');
             $venta->tipo_comprobante=$request->get('tipo_comprobante');
             $venta->num_comprobante=$request->get('num_comprobante');
@@ -62,7 +62,7 @@ class VentaController extends Controller
 
             $mytime= Carbon::now('America/Guayaquil');
             $venta->fecha=$mytime->toDateTimeString();
-            $venta->iva='12';
+            $venta->iva='0.12';
             $venta->estado='Activo';
             $venta->save();
  

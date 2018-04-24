@@ -17,7 +17,9 @@ class Ingreso extends Model
     	'num_comrobante',
     	'fecha',
     	'iva',
-    	'estado'];
-    	protected $guarded =[]  ;
+    	'estado'
+    ];
+    protected $guarded =[
+        ];
 
 }
