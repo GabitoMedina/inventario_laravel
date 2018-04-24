@@ -30,7 +30,7 @@
 								<td>{{ $ing->estado}}</td>
 								<td> <a href="{{URL::action('IngresoController@show',$ing->idingreso)}}"><button class="btn btn-primary">Detalles</button></a>
 									<a href="" data-target="#modal-delete-{{$ing->idingreso}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
-								</td>0
+								</td>
 							</tr>
 							@include('compras.ingreso.modal')
 							@endforeach
