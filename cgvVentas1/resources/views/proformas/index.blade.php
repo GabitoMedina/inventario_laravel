@@ -29,7 +29,7 @@
 								<td>{{ $prf->estado}}</td>
 								<td> <a href="{{URL::action('ProformaController@show',$prf->idproforma)}}"><button class="btn btn-primary">Detalles</button></a>
 									<a href="" data-target="#modal-delete-{{$prf->idproforma}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
-								</td>0
+								</td>
 							</tr>
 							@include('proformas.modal')
 							@endforeach

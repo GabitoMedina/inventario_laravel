@@ -3,22 +3,22 @@
 	<div class="row">
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="proveedor">Proveedor</label>
-				<p>{{$ingreso->nombre}}</p>
+				<label for="proveedor">Cliente</label>
+				<p>{{$proforma->nombre}}</p>
 				
 			</div>
 		</div>
 		<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 			<div class="form-group">
 				<label >Comprobante</label>
-				<p>{{$ingreso->tipo_comprobante}}</p>
+				<p>{{$proforma->tipo_comprobante}}</p>
 			</div>
 		</div>
 
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
 				<label for="num_comprobante">Num Comprobante</label>
-				<p>{{$ingreso->num_comprobante}}</p>
+				<p>{{$proforma->num_comprobante}}</p>
 			</div>
 		</div>
 	</div>	
@@ -33,8 +33,8 @@
 								
 								<th>Articulo</th>
 								<th>Cantidad</th>
-								<th>P Compra</th>
 								<th>P Venta</th>
+								<th>Descuento</th>
 								<th>Subtotal</th>
 								
 							</thead>
@@ -44,7 +44,7 @@
 								<th></th>
 								<th></th>
 								<th></th>
-								<th><h4 id="total">{{$ingreso->total}}</h4></th>
+								<th><h4 id="total">{{$proforma->total_venta}}</h4></th>
 								
 							</tfoot>
 
@@ -53,9 +53,9 @@
 									<tr>
 										<td>{{$det->articulo}}</td>
 										<td>{{$det->cantidad}}</td>
-										<td>{{$det->precio_compra}}</td>
 										<td>{{$det->precio_venta}}</td>
-										<td>{{$det->cantidad*$det->precio_compra}}</td>
+										<td>{{$det->descuento}}</td>
+										<td>{{$det->cantidad*$det->precio_venta-$det->descuento}}</td>
 									</tr>
 
 								@endforeach
