@@ -15,7 +15,7 @@
 		</div>
 	</div>
 
-			{!!Form::open(array('url'=>'ventas/create','method'=>'POST','autocomplete'=>'off'))!!}
+			{!!Form::open(array('url'=>'ventas/venta','method'=>'POST','autocomplete'=>'off'))!!}
 			{{Form::token()}}
 	<div class="row">
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -63,6 +63,7 @@
 						</div>
 
 					</div>
+
 					<div class="col-lg-2 col-sm-2 col-xs-12">
 						<div class="form-group">
 							<label for="cantidad">Cantidad</label>
@@ -74,6 +75,13 @@
 						<div class="form-group">
 							<label for="stock">Stock</label>
 							<input type="number" disabled name="pstock" id="pstock" class="form-control" placeholder="Stock">
+						</div>
+					</div>
+
+					<div class="col-lg-2 col-sm-2 col-xs-12">
+						<div class="form-group">
+							<label for="cantidad">Precio venta</label>
+							<input type="number" name="pprecio_venta" disabled id="pprecio_venta" class="form-control" placeholder="cantidad">
 						</div>
 					</div>
 
@@ -95,7 +103,7 @@
 							<thead style="background-color: teal">
 								<th>Opciones</th>
 								<th>Articulo</th>
-								<th>Cantidad</th>								
+								<th>Cantidad</th>				
 								<th>P Venta</th>
 								<th>Descuento</th>
 								<th>Subtotal</th>
@@ -150,39 +158,49 @@
 	$("#guardar").hide();
 	$("#pidarticulo").change(mostrarValores);
 
-	function mostrarValores()
+function mostrarValores()
 	{
 		datosArticulos=document.getElementById('pidarticulo').value.split('_');
-		$('#pprecio_venta').val(datosArticulos[2]);
-		$("#pstock").val(datosArticulos[1]);
+		$("#pprecio_venta").val(datosArticulos[1]);
+		$("#pstock").val(datosArticulos[2]);
 
 	}
 
 	function agregar(){
-		idarticulo=$("#pidarticulo").val();
-		articulo=$("#pidarticulo option:selected").text();
-		cantidad=$("#pcantidad").val();
-		precio_compra=$("#pprecio_compra").val();
-		precio_venta=$("#pprecio_venta").val();
+		datosArticulos=document.getElementById('pidarticulo'.value.split('_');
+			idarticulo=datosArticulos[0];
+			articulo=$('#pidarticulo option:selected').text();
+			cantidad=$('#pcantidad').val();
+			descuento=$('#pdescuento').val(); 
+			precio_venta=$("#pprecio_venta").val();
+			stock=$('#pstock').val(); 
 
-		if (idarticulo!="" && cantidad!="" && cantidad>0 && precio_compra!="" && precio_venta!="") {
-			subtotal[cont]=(cantidad*precio_compra);
+		if (idarticulo!="" && cantidad!="" && cantidad>0 && descuento!="" && precio_venta!="") {
+				if (stock>=cantidad)
+				{
+			subtotal[cont]=(cantidad*precio_venta-descuento);
 			total=total + subtotal[cont];
-			var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td><td><input type="number" name="precio_compra[]" value="'+precio_compra+'"></td><td><input type="number" name="precio_venta[]" value="'+precio_venta+'"></td><td>'+subtotal[cont]+'</td></tr>';
+			var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td><td><input type="number" name="precio_venta[]" value="'+precio_venta+'"></td><td><input type="number" name="descuento[]" value="'+descuento+'"></td><td>'+subtotal[cont]+'</td></tr>';
 			cont++;
 			limpiar();
 			$("#total").html("$/."+total);
+			$("#total_venta").val(total);
 			evaluar();
 			$('#detalles').append(fila);
 		}else
+
 		{
-			alert("error al ingresar el detalle del ingreso, revise datos articulo");
+			alert("La cantidad a vender supera el stock ");
 		}
 
 	}
+	else{
+			alert("Error al ingresar el detallle de venta, revise los datos del articulo")
+	}
+	}
 	function limpiar(){
 		$("pcantidad").val("");
-		$("pprecio_compra").val("");
+		$("pdescuento").val("");
 		$("pprecio_venta").val("");
 	}
 
@@ -198,6 +216,7 @@
 	function eliminar(index){
 		total=total-subtotal[index];
 		$("#total").html("$/."+ total);
+		$('#total_venta').val(total);
 		$("#fila" + index).remove();
 		evaluar();
 	}
