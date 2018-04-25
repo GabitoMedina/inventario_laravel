@@ -16,6 +16,9 @@ class DetalleProforma extends Model
     	'idarticulo',
     	'cantidad',
     	'precio_venta',
-    	'descuento'];
-    	protected $guarded =[]  ;
+    	'descuento'
+    ];
+
+    protected $guarded =[
+    ];
 }
