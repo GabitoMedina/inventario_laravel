@@ -18,17 +18,17 @@
 								<th>Estado</th>
 								<th>Opciones</th>
 							</thead>
-							@foreach ($proformas as $prf)
+							@foreach ($proformas as $prof)
 							<tr>
 								
-								<td>{{ $prf->fecha}}</td>
-								<td>{{ $prf->nombre}}</td>
-								<td>{{ $prf->tipo_comprobante.': '.$prf->num_comprobante}}</td>
-								<td>{{ $prf->iva}}</td>
-								<td>{{ $prf->total}}</td>
-								<td>{{ $prf->estado}}</td>
-								<td> <a href="{{URL::action('ProformaController@show',$prf->idproforma)}}"><button class="btn btn-primary">Detalles</button></a>
-									<a href="" data-target="#modal-delete-{{$prf->idproforma}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
+								<td>{{ $prof->fecha}}</td>
+								<td>{{ $prof->nombre}}</td>
+								<td>{{ $prof->tipo_comprobante.': '.$prf->num_comprobante}}</td>
+								<td>{{ $prof->iva}}</td>
+								<td>{{ $prof->total}}</td>
+								<td>{{ $prof->estado}}</td>
+								<td> <a href="{{URL::action('ProformaController@show',$prof->idproforma)}}"><button class="btn btn-primary">Detalles</button></a>
+									<a href="" data-target="#modal-delete-{{$prof->idproforma}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
 								</td>
 							</tr>
 							@include('proformas.modal')

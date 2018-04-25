@@ -152,23 +152,26 @@
 			agregar();
 		});
 	});
+
+	var datosArticulo;
 	var cont=0;
 	total=0;
 	subtotal=[];
 	$("#guardar").hide();
 	$("#pidarticulo").change(mostrarValores);
 
-function mostrarValores()
-	{
-		datosArticulos=document.getElementById('pidarticulo').value.split('_');
-		$("#pprecio_venta").val(datosArticulos[1]);
-		$("#pstock").val(datosArticulos[2]);
+	function mostrarValores()
+		{
+			datosArticulo=document.getElementById('pidarticulo').value.split('_');
+			$("#pprecio_venta").val(datosArticulo[2]);
+			$("#pstock").val(datosArticulo[1]);
 
-	}
+		}
 
 	function agregar(){
-		datosArticulos=document.getElementById('pidarticulo'.value.split('_');
-			idarticulo=datosArticulos[0];
+			// datosArticulo=document.getElementById('pidarticulo'.value.split('_');
+			// idarticulo=datosArticulo[0];
+			idarticulo=$("#pidarticulo").val();
 			articulo=$('#pidarticulo option:selected').text();
 			cantidad=$('#pcantidad').val();
 			descuento=$('#pdescuento').val(); 

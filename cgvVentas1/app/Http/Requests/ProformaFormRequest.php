@@ -31,7 +31,7 @@ class ProformaFormRequest extends Request
             'cantidad'=>'required',
             'precio_venta'=>'required',
             'descuento'=>'required',
-            'total_proforma'=>'required'
+            'total_venta'=>'required'
         ];
     }
 }

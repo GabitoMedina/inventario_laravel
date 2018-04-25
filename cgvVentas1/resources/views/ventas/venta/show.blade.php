@@ -1,5 +1,7 @@
 @extends ('layouts.admin')
-@section ('contenido')			
+
+@section ('contenido')
+			
 	<div class="row">
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
@@ -29,14 +31,12 @@
 
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<table id="detalles" class="table table-stiped table-bordered table-condensed table-hover">
-							<thead style="background-color: teal">
-								
+							<thead style="background-color: teal">							
 								<th>Articulo</th>
 								<th>Cantidad</th>
-								<th>P Compra</th>
+								<th>Descuento</th>
 								<th>P Venta</th>
-								<th>Subtotal</th>
-								
+								<th>Subtotal</th>			
 							</thead>
 							<tfoot>
 								
@@ -44,19 +44,19 @@
 								<th></th>
 								<th></th>
 								<th></th>
-								<th><h4 id="total">{{$venta->total}}</h4></th>
+								<th><h4 id="total">{{$venta->total_venta}}</h4></th>
 								
 							</tfoot>
 
-							<tbody>
-								@foreach($detalle as $det)
-									<tr>
-										<td>{{$det->articulo}}</td>
-										<td>{{$det->cantidad}}</td>
-										<td>{{$det->precio_compra}}</td>
-										<td>{{$det->precio_venta}}</td>
-										<td>{{$det->cantidad*$det->precio_compra}}</td>
-									</tr>
+							<tbody>								
+								@foreach($detalles as $det)
+								<tr>
+									<td>{{$det->articulo}}</td>
+									<td>{{$det->cantidad}}</td>
+									<td>{{$det->descuento}}</td>
+									<td>{{$det->precio_venta}}</td>
+									<td>{{$det->cantidad*$det->precio_venta-$det->descuento}}</td>
+								</tr>
 
 								@endforeach
 								
