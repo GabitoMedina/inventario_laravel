@@ -32,7 +32,7 @@ class ProformaController extends Controller
             $proformas=DB::table('proforma as prof')
             ->join('persona as p','prof.idcliente','=','p.idpersona')
             ->join('detalle_proforma as dp','prof.idproforma','=','dp.idproforma')
-            ->select('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado',DB::raw('sum(dp.cantidad*precio_compra) as total')) 
+            ->select('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado',DB::raw('sum(dp.cantidad*precio_venta) as total')) 
             ->where('prof.num_comprobante','LIKE','%'.$query.'%')
             ->orderBy('prof.idproforma','desc')
             ->groupBy('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado')

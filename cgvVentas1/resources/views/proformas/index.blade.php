@@ -20,7 +20,7 @@
 							</thead>
 							@foreach ($proformas as $prf)
 							<tr>
-								<!-- <td>{{ $ing->idingreso}}</td> -->
+								
 								<td>{{ $prf->fecha}}</td>
 								<td>{{ $prf->nombre}}</td>
 								<td>{{ $prf->tipo_comprobante.': '.$prf->num_comprobante}}</td>
