@@ -23,7 +23,7 @@
 								
 								<td>{{ $prof->fecha}}</td>
 								<td>{{ $prof->nombre}}</td>
-								<td>{{ $prof->tipo_comprobante.': '.$prf->num_comprobante}}</td>
+								<td>{{ $prof->tipo_comprobante.': '.$prof->num_comprobante}}</td>
 								<td>{{ $prof->iva}}</td>
 								<td>{{ $prof->total}}</td>
 								<td>{{ $prof->estado}}</td>
