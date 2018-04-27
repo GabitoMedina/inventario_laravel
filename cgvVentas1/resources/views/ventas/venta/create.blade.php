@@ -97,6 +97,11 @@
 							<button type="button" id="bt_add" class="btn btn-primary">Agregar</button>						
 						</div>
 					</div>
+					<div class="col-lg-2 col-sm-2 col-xs-12">
+						<div class="form-group">
+							<button type="button" id="bt_fact" class="btn btn-primary">Facturar</button>						
+						</div>
+					</div>
 
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<table id="detalles" class="table table-stiped table-bordered table-condensed table-hover">
@@ -149,58 +154,78 @@
 <script>
 	$(document).ready(function(){
 		$('#bt_add').click(function(){
+			
+			// mostrarValores();
 			agregar();
 		});
 	});
+	// $(document).ready(function(){
+	// 	$('#bt_fact').click(function(){
+	// 		agregar();
+	// 		// mostrarValores();
+	// 	});
+	// });
 
-	var datosArticulo;
+	// var datosArticulo;
 	var cont=0;
 	total=0;
 	subtotal=[];
-	$("#guardar").hide();
+	
 	$("#pidarticulo").change(mostrarValores);
+	$("#guardar").hide();
 
-	function mostrarValores()
-		{
+	// function mostrarValores()
+	// 	{
+	// 		datosArticulo=document.getElementById('pidarticulo').value.split('_');
+	// 		$("#pprecio_venta").val(datosArticulo[2]);
+	// 		$("#pstock").val(datosArticulo[1]);
+
+	// 	}
+
+	function agregar()
+	{
+			// datosArticulo=document.getElementById('pidarticulo'.value.split('_');
 			datosArticulo=document.getElementById('pidarticulo').value.split('_');
 			$("#pprecio_venta").val(datosArticulo[2]);
 			$("#pstock").val(datosArticulo[1]);
-
-		}
-
-	function agregar(){
-			// datosArticulo=document.getElementById('pidarticulo'.value.split('_');
-			// idarticulo=datosArticulo[0];
-			idarticulo=$("#pidarticulo").val();
-			articulo=$('#pidarticulo option:selected').text();
-			cantidad=$('#pcantidad').val();
-			descuento=$('#pdescuento').val(); 
+			idarticulo=datosArticulo[0];
+			
+			articulo=$("#pidarticulo option:selected").text();
+			cantidad=$("#pcantidad").val();
+			descuento=$("#pdescuento").val(); 
 			precio_venta=$("#pprecio_venta").val();
-			stock=$('#pstock').val(); 
+			stock=$("#pstock").val(); 
 
-		if (idarticulo!="" && cantidad!="" && cantidad>0 && descuento!="" && precio_venta!="") {
-				if (stock>=cantidad)
+			if (idarticulo!="" && cantidad!="" && cantidad>0 && descuento!="" && precio_venta!="")
+			{
+				if (stock>0)
 				{
-			subtotal[cont]=(cantidad*precio_venta-descuento);
-			total=total + subtotal[cont];
-			var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td><td><input type="number" name="precio_venta[]" value="'+precio_venta+'"></td><td><input type="number" name="descuento[]" value="'+descuento+'"></td><td>'+subtotal[cont]+'</td></tr>';
-			cont++;
-			limpiar();
-			$("#total").html("$/."+total);
-			$("#total_venta").val(total);
-			evaluar();
-			$('#detalles').append(fila);
-		}else
+					subtotal[cont]=(cantidad*precio_venta-descuento);
+					total=total + subtotal[cont];
+					var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]"  value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" disabled value="'+cantidad+'"></td><td><input type="number" name="precio_venta[]" value="'+precio_venta+'"></td><td><input type="number" name="descuento[]" value="'+descuento+'"></td><td>'+subtotal[cont]+'</td></tr>';
+					cont++;
+					limpiar();
+					$("#total").html("$/."+total);
+					$("#total_venta").val(total);
+					evaluar();
+					$('#detalles').append(fila);
+				}
+				else
+				{
+					alert('cantida supera stock');
+				}
 
-		{
-			alert("La cantidad a vender supera el stock ");
+			}
+			// else
+			// {
+			// 	alert('error al ingresar venta');
+			// }
 		}
 
-	}
-	else{
-			alert("Error al ingresar el detallle de venta, revise los datos del articulo")
-	}
-	}
+	// end key
+			
+
+		
 	function limpiar(){
 		$("pcantidad").val("");
 		$("pdescuento").val("");
