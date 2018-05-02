@@ -12,14 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.admin');
+    return view('auth/login');
 });
-Route::get('prf', function () {
+/* Route::get('prf', function () {
     return view('proformas.index');
 });
 Route::get('prfc', function () {
     return view('proformas.create');
-});
+}); */
 
 Route::resource('cgv/categoria','CategoriaController');
 Route::resource('cgv/articulo','ArticuloController');
@@ -28,3 +28,9 @@ Route::resource('compras/proveedor','ProveedorController');
 Route::resource('compras/ingreso','IngresoController');
 Route::resource('ventas/venta','VentaController');
 Route::resource('proformas','ProformaController');
+Route::resource('seguridad/usuario','UsuarioController');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+Route::get('/{slug?}','HomeController@index');

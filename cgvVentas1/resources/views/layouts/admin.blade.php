@@ -47,7 +47,7 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-green">Online</small>
+                 <!-- <small class="bg-green">Online</small> -->
                   <span class="hidden-xs">Usuario</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -63,7 +63,7 @@
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Cerrar</a>
+                      <a href="{{url('/logout')}}" class="btn btn-default btn-flat">Cerrar</a>
                     </div>
                   </li>
                 </ul>
@@ -139,7 +139,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li><a href="{{route ('seguridad.usuario.index')}}"><i class="fa fa-circle-o"></i> Usuarios</a></li>
                 
               </ul>
             </li>
