@@ -32,7 +32,7 @@ class ProformaController extends Controller
             $proformas=DB::table('proforma as prof')
             ->join('persona as p','prof.idcliente','=','p.idpersona')
             ->join('detalle_proforma as dp','prof.idproforma','=','dp.idproforma')
-            ->select('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado','prof.total')
+            ->select('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado','prof.total_venta')
             ->where('prof.num_comprobante','LIKE','%'.$query.'%')
             ->orderBy('prof.idproforma','desc')
             ->groupBy('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado')
@@ -45,7 +45,7 @@ class ProformaController extends Controller
         $personas=DB::table('persona')->where('tipo_persona','=','Cliente')->get();
         $articulos = DB::table('articulo as art')
         ->join('detalle_proforma as dp','art.idarticulo','=','dp.idarticulo')
-        ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo','art.stock',(DB::raw('avg(dp.precio_venta)as precio_promedio')))
+        ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo','art.stock',DB::raw('avg(dp.precio_venta)as precio_promedio'))
         ->where('art.estado','=','Activo')
         ->where('art.stock','>','0')
         ->groupBy('articulo','art.idarticulo','art.stock')

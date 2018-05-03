@@ -30,6 +30,7 @@ Route::resource('ventas/venta','VentaController');
 Route::resource('proformas','ProformaController');
 Route::resource('seguridad/usuario','UsuarioController');
 
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

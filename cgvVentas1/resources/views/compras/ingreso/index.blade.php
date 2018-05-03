@@ -28,7 +28,7 @@
 								<td>{{ $ing->iva}}</td>
 								<td>{{ $ing->total}}</td>
 								<td>{{ $ing->estado}}</td>
-								<td> <a href="{{URL::action('IngresoController@show',$ing->idingreso)}}"><button class="btn btn-primary">Detalles</button></a>
+								<td> <a href="{{URL::action('IngresoController@show',$ing->idingreso)}}" target="_blank"><button class="btn btn-primary">Detalles</button></a>
 									<a href="" data-target="#modal-delete-{{$ing->idingreso}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
 								</td>
 							</tr>

@@ -1,18 +1,6 @@
-@extends ('layouts.admin')
-@section ('contenido')	
-
-	<div class="row">
-		<div class="col-lg-2 col-sm-2 col-xs-12">
-			<div class="form-group">
-				<a href="#"><button type="button" id="bt_descrga" class="btn btn-primary">Descargar</button></a>
-			</div>
-		</div>
-		<div class="col-lg-2 col-sm-2 col-xs-12">
-			<div class="form-group">
-				<a href="#" target="_blank"><button type="button" id="bt_descrga" class="btn btn-primary">Ver</button></a>
-			</div>
-		</div>
-	</div>		
+@extends ('layouts.factura')
+@section ('contenido1')	
+		
 	<div class="row">
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">

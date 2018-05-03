@@ -97,12 +97,7 @@
 							<button type="button" id="bt_add" class="btn btn-primary">Agregar</button>						
 						</div>
 					</div>
-					<div class="col-lg-2 col-sm-2 col-xs-12">
-						<div class="form-group">
-							<button type="button" id="bt_fact" class="btn btn-primary">Facturar</button>						
-						</div>
-					</div>
-
+					
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<table id="detalles" class="table table-stiped table-bordered table-condensed table-hover">
 							<thead style="background-color: teal">
@@ -154,14 +149,7 @@
 			agregar();
 		});
 	});
-	// $(document).ready(function(){
-	// 	$('#bt_fact').click(function(){
-	// 		agregar();
-	// 		// mostrarValores();
-	// 	});
-	// });
-
-	// var datosArticulo;
+	
 	var cont=0;
 	total=0;
 	subtotal=[];
