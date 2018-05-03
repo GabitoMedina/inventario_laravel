@@ -32,7 +32,7 @@ class ProformaController extends Controller
             $proformas=DB::table('proforma as prof')
             ->join('persona as p','prof.idcliente','=','p.idpersona')
             ->join('detalle_proforma as dp','prof.idproforma','=','dp.idproforma')
-            ->select('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado',DB::raw('sum(dp.cantidad*precio_venta) as total')) 
+            ->select('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado','prof.total')
             ->where('prof.num_comprobante','LIKE','%'.$query.'%')
             ->orderBy('prof.idproforma','desc')
             ->groupBy('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado')
@@ -45,7 +45,7 @@ class ProformaController extends Controller
         $personas=DB::table('persona')->where('tipo_persona','=','Cliente')->get();
         $articulos = DB::table('articulo as art')
         ->join('detalle_proforma as dp','art.idarticulo','=','dp.idarticulo')
-        ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo','art.stock',DB::raw('avg(dp.precio_venta)as precio_promedio'))
+        ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo','art.stock',(DB::raw('avg(dp.precio_venta)as precio_promedio')))
         ->where('art.estado','=','Activo')
         ->where('art.stock','>','0')
         ->groupBy('articulo','art.idarticulo','art.stock')
@@ -61,7 +61,7 @@ class ProformaController extends Controller
             $proforma->idcliente=$request->get('idcliente');
             $proforma->tipo_comprobante=$request->get('tipo_comprobante');
             $proforma->num_comprobante=$request->get('num_comprobante');
-            $proforma->total_venta=$request->get('total_venta');
+            $proforma->total=$request->get('total');
 
             $mytime= Carbon::now('America/Guayaquil');
             $proforma->fecha=$mytime->toDateTimeString();
@@ -96,16 +96,16 @@ class ProformaController extends Controller
     public function show($id)
     {
         $proforma=DB::table('proforma as prof')
-            ->join('persona as p','prof.idcliente','=','p.idpersona')
+            ->join('persona as p','prof.idcliente','=','prof.idpersona')
             ->join('detalle_proforma as dp','prof.idproforma','=','dp.idproforma')
-            ->select('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado','prof.total_venta') 
+            ->select('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado','prof.total') 
             ->where('prof.idproforma','=',$id)
             ->first();
 
-        $detalles=DB::table('detalle_proforma as d')
-            ->join('articulo as a','d.idarticulo','=','a.idarticulo')
-            ->select('a.nombre as articulo','d.cantidad','d.descuento','d.precio_venta')
-            ->where('d.idproforma','=',$id)
+        $detalles=DB::table('detalle_proforma as dp')
+            ->join('articulo as a','dp.idarticulo','=','a.idarticulo')
+            ->select('a.nombre as articulo','dp.cantidad','dp.descuento','dp.precio_venta')
+            ->where('dp.idproforma','=',$id)
             ->get();
         return view("proformas.show",["proforma"=>$proforma,"detalles"=>$detalles]);
     }
