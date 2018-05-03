@@ -73,7 +73,7 @@
 					<div class="col-lg-2 col-sm-2 col-xs-12">
 						<div class="form-group">
 							<label for="cantidad">Num. Serie</label>
-							<input type="number" name="pserie" id="pserie" class="form-control" placeholder="NumSerie">
+							<input type="number" name="pnum_serie" id="pnum_serie" class="form-control" placeholder="NumSerie">
 						</div>
 					</div>
 
@@ -136,7 +136,7 @@
 				<div class="form-group">
 					<input type="hidden" name="_token" value="{{ csrf_token()}}">
 					<button class="btn btn-primary" type="submit">Guardar</button>
-					<button class="btn btn-danger" type="reset">Cancelar</button>
+					<a class="btn btn-danger" href="{{ route('compras.ingreso.index') }}"> Cancelar</a>
 				</div>
 			</div>
 
@@ -163,14 +163,14 @@
 		idarticulo=$("#pidarticulo").val();
 		articulo=$("#pidarticulo option:selected").text();
 		cantidad=$("#pcantidad").val();
-		serie=$("#pserie").val();
+		num_serie=$("#pnum_serie").val();
 		precio_compra=$("#pprecio_compra").val();
 		precio_venta=$("#pprecio_venta").val();
 
-		if (idarticulo!="" && cantidad!="" && cantidad>0 && precio_compra!="" && precio_venta!="") {
+		if (idarticulo!="" && cantidad!="" && cantidad>0 && num_serie!="" && precio_compra!="" && precio_venta!="") {
 			subtotal[cont]=(cantidad*precio_compra);
 			total=total + subtotal[cont];
-			var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td> <td><input type="hidden" name="serie[]" value="'+serie+'">'+serie+'</td> <td><input type="number" name="precio_compra[]" value="'+precio_compra+'"></td><td><input type="number" name="precio_venta[]" value="'+precio_venta+'"></td><td>'+subtotal[cont]+'</td></tr>';
+			var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td> <td><input type="hidden" name="num_serie[]" value="'+num_serie+'">'+num_serie+'</td> <td><input type="number" name="precio_compra[]" value="'+precio_compra+'"></td><td><input type="number" name="precio_venta[]" value="'+precio_venta+'"></td><td>'+subtotal[cont]+'</td></tr>';
 			cont++;
 			limpiar();
 			$("#total").html("$/."+total);

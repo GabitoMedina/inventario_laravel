@@ -63,6 +63,7 @@ class IngresoController extends Controller
  
             $idarticulo= $request->get('idarticulo');
             $cantidad = $request->get('cantidad');
+            $num_serie = $request->get('num_serie');
             $precio_compra = $request->get('precio_compra');
             $precio_venta = $request->get('precio_venta');
              
@@ -72,6 +73,7 @@ class IngresoController extends Controller
                 $detalle->idingreso=$ingreso->idingreso;
                 $detalle->idarticulo= $idarticulo[$cont]; 
                 $detalle->cantidad= $cantidad[$cont];
+                $detalle->num_serie= $num_serie[$cont];
                 $detalle->precio_compra= $precio_compra[$cont];
                 $detalle->precio_venta= $precio_venta[$cont];
                 $detalle->save();

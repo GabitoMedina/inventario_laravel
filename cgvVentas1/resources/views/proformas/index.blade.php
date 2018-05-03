@@ -11,16 +11,17 @@
 							<thead>
 								<!-- <th>Id</th> -->
 								<th>Fecha</th>
-								<th>Cliente</th>
+								<th>Proveedor</th>
 								<th>Comprobante</th>
 								<th>Iva</th>
 								<th>Total</th>
 								<th>Estado</th>
 								<th>Opciones</th>
 							</thead>
+
 							@foreach ($proformas as $prof)
 							<tr>
-								
+								<!-- <td>{{ $ing->idingreso}}</td> -->
 								<td>{{ $prof->fecha}}</td>
 								<td>{{ $prof->nombre}}</td>
 								<td>{{ $prof->tipo_comprobante.': '.$prof->num_comprobante}}</td>

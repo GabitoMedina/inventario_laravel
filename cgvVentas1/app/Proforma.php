@@ -17,7 +17,7 @@ class Proforma extends Model
     	'num_comrobante',
     	'fecha',
     	'iva',
-        'total',
+        'total_venta',
     	'estado'
     ];
     	protected $guarded =

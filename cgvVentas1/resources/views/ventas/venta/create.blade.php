@@ -138,16 +138,11 @@
 				<div class="form-group">
 					<input type="hidden" name="_token" value="{{ csrf_token()}}">
 					<button class="btn btn-primary" type="submit">Guardar</button>
-					<button class="btn btn-danger" type="reset">Cancelar</button>
+					<a class="btn btn-danger" href="{{ route('ventas.venta.index') }}"> Cancelar</a>
 				</div>
 			</div>
 
-		</div>
-
-				
-	
-		
-		
+		</div>		
 	
 			{!!Form::close()!!}
 @push('scripts')

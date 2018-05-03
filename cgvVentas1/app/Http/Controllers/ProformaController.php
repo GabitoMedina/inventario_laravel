@@ -55,17 +55,17 @@ class ProformaController extends Controller
 
      public function store (ProformaFormRequest $request)
     {
-        try{
+        try{ 
             DB::beginTransaction();
-            $proforma=new Proforma;
+            $proforma=new Venta;
             $proforma->idcliente=$request->get('idcliente');
             $proforma->tipo_comprobante=$request->get('tipo_comprobante');
             $proforma->num_comprobante=$request->get('num_comprobante');
-            $proforma->total=$request->get('total');
+            $proforma->total_venta=$request->get('total_venta');
 
             $mytime= Carbon::now('America/Guayaquil');
             $proforma->fecha=$mytime->toDateTimeString();
-            $proforma->iva='12';
+            $proforma->iva='0.12';
             $proforma->estado='Activo';
             $proforma->save();
  
@@ -76,7 +76,7 @@ class ProformaController extends Controller
              
             $cont = 0;
             while($cont < count($idarticulo)){
-                $detalle = new DetalleProforma();
+                $detalle = new DetalleVenta();
                 $detalle->idproforma=$proforma->idproforma;
                 $detalle->idarticulo= $idarticulo[$cont]; 
                 $detalle->cantidad= $cantidad[$cont];

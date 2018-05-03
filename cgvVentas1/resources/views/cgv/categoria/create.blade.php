@@ -25,7 +25,7 @@
 			</div>
 			<div class="form-group">
 				<button class="btn btn-primary" type="submit">Guardar</button>
-				<button class="btn btn-danger" type="reset">Cancelar</button>
+				<a class="btn btn-danger" href="{{ route('cgv.categoria.index') }}"> Cancelar</a>
 			</div>
 			{!!Form::close()!!}
 		</div>
