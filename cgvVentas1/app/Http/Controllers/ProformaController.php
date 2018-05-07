@@ -57,7 +57,7 @@ class ProformaController extends Controller
     {
         try{ 
             DB::beginTransaction();
-            $proforma=new Venta;
+            $proforma=new Proforma;
             $proforma->idcliente=$request->get('idcliente');
             $proforma->tipo_comprobante=$request->get('tipo_comprobante');
             $proforma->num_comprobante=$request->get('num_comprobante');
@@ -76,7 +76,7 @@ class ProformaController extends Controller
              
             $cont = 0;
             while($cont < count($idarticulo)){
-                $detalle = new DetalleVenta();
+                $detalle = new DetalleProforma();
                 $detalle->idproforma=$proforma->idproforma;
                 $detalle->idarticulo= $idarticulo[$cont]; 
                 $detalle->cantidad= $cantidad[$cont];
@@ -96,9 +96,9 @@ class ProformaController extends Controller
     public function show($id)
     {
         $proforma=DB::table('proforma as prof')
-            ->join('persona as p','prof.idcliente','=','prof.idpersona')
+            ->join('persona as p','prof.idcliente','=','p.idpersona')
             ->join('detalle_proforma as dp','prof.idproforma','=','dp.idproforma')
-            ->select('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado','prof.total') 
+            ->select('prof.idproforma','prof.fecha','p.nombre','prof.tipo_comprobante','prof.num_comprobante','prof.iva','prof.estado','prof.total_venta') 
             ->where('prof.idproforma','=',$id)
             ->first();
 
