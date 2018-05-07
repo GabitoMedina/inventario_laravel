@@ -143,8 +143,7 @@
 @push('scripts')
 <script>
 	$(document).ready(function(){
-		$('#bt_add').click(function(){
-			
+		$('#bt_add').click(function(){			
 			mostrarValores();
 			agregar();
 		});
@@ -200,10 +199,10 @@
 
 
 			}
-			// else
-			// {
-			// 	alert('error al ingresar venta');
-			// }
+			else
+			{
+				alert('error al ingresar venta');
+			}
 		}
 		
 
