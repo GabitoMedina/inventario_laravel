@@ -13,10 +13,13 @@ class Servicio extends Model
 
     protected $fillable = [
     	'idcliente',
-    	'tipo_comprobante',
+    	// 'tipo_comprobante',
     	'num_comrobante',
-    	'fecha',
-    	'iva',
+    	'fecha_entrada',
+        'fecha_entrega',
+    	'costo_chequeo',
+        'abono',
+        'saldo',
     	'total_servicio', 
     	'estado'];
     	protected $guarded =[]  ;

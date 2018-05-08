@@ -13,10 +13,13 @@ class DetalleServicio extends Model
 
     protected $fillable = [
     	'idservicio',
-    	'idarticulo',
-    	'cantidad',
-    	'precio_venta',
-    	'descuento'
+    	'respaldo',
+    	'idcaracteristicas',
+        'fecha_entrega',
+        'costo_chequeo',
+        'abono',
+        'saldo',
+        'total_servicio'
     ];
 
     protected $guarded =[

@@ -43,7 +43,7 @@
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
 				<label for="stock">Stock</label>
-				<input type="text" name="stock" required value="{{old('stock')}}" class="form-control" placeholder="Stock del producto">
+				<input type="text" name="stock" required readonly value="0" class="form-control" >
 			</div>
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
