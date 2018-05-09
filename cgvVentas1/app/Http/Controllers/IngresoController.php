@@ -3,6 +3,7 @@
 namespace cgvVentas\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade;
 
 use cgvVentas\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -11,6 +12,7 @@ use cgvVentas\Http\Requests\IngresoFormRequest;
 use cgvVentas\Ingreso;
 use cgvVentas\DetalleIngreso;
 use DB;
+use PDF;
 use Carbon\Carbon;
 use Response;
 use Illuminate\Support\Collection;
@@ -87,6 +89,36 @@ class IngresoController extends Controller
         return Redirect::to('compras/ingreso');
     }
 
+    // para imprimir pdf
+
+    public function pdf($id)
+    {        
+        /**
+         * toma en cuenta que para ver los mismos 
+         * datos debemos hacer la misma consulta
+        **/
+        $id='id';
+    
+       $ingreso=DB::table('ingreso as i')
+            ->join('persona as p','i.idproveedor','=','p.idpersona')
+            ->join('detalle_ingreso as di','i.idingreso','=','di.idingreso')
+            ->select('i.idingreso','i.fecha','p.nombre','i.tipo_comprobante','i.num_comprobante','i.iva','i.estado',DB::raw('sum(di.cantidad*precio_compra) as total')) 
+            ->where('i.idingreso','=','id')
+            ->first();
+
+        $detalles=DB::table('detalle_ingreso as d')
+            ->join('articulo as a','d.idarticulo','=','a.idarticulo')
+            ->select('a.nombre as articulo','d.cantidad','d.precio_compra','d.precio_venta')
+            ->where('d.idingreso','=',$id)
+            ->get();
+        // return view("compras.ingreso.pdf",["ingreso"=>$ingreso,"detalles"=>$detalles]); 
+
+        $pdf = PDF::loadView('compras.ingreso.pdf', ["ingreso"=>$ingreso,"detalles"=>$detalles]); 
+        // return view("compras.ingreso.pdf",["ingreso"=>$ingreso,"detalles"=>$detalles]); 
+
+        return $pdf->download('listado.pdf');
+    }
+
     public function show($id)
     {
         $ingreso=DB::table('ingreso as i')
@@ -101,7 +133,9 @@ class IngresoController extends Controller
             ->select('a.nombre as articulo','d.cantidad','d.precio_compra','d.precio_venta')
             ->where('d.idingreso','=',$id)
             ->get();
-        return view("compras.ingreso.show",["ingreso"=>$ingreso,"detalles"=>$detalles]);
+            $pdf = PDF::loadView("compras.ingreso.show",["ingreso"=>$ingreso,"detalles"=>$detalles]);
+            return $pdf->download('reporte.pdf');
+        // return view("compras.ingreso.show",["ingreso"=>$ingreso,"detalles"=>$detalles]);
     }
  
     public function destroy($id)

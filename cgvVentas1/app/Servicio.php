@@ -15,12 +15,7 @@ class Servicio extends Model
     	'idcliente',
     	// 'tipo_comprobante',
     	'num_comrobante',
-    	'fecha_entrada',
-        'fecha_entrega',
-    	'costo_chequeo',
-        'abono',
-        'saldo',
-    	'total_servicio', 
+    	'fecha_entrada',         
     	'estado'];
     	protected $guarded =[]  ;
 }

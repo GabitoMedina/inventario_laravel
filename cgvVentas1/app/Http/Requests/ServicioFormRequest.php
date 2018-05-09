@@ -24,7 +24,15 @@ class ServicioFormRequest extends Request
     public function rules()
     {
         return [
-            //
+            'idcliente'=>'required',
+            // 'tipo_comprobante'=>'required|max:20',
+            'num_comprobante'=>'required|max:10',
+            'fecha_entrada'=>'required',
+            // 'fecha_entrada'=>'required',
+            'costo_chequeo'=>'required',
+            'bono'=>'required',
+            'saldo'=>'required',
+            'total_servicio'=>'required'
         ];
     }
 }

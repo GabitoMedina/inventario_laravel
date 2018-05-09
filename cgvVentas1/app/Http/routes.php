@@ -29,6 +29,7 @@ Route::resource('compras/ingreso','IngresoController');
 Route::resource('ventas/venta','VentaController');
 Route::resource('proformas','ProformaController');
 Route::resource('seguridad/usuario','UsuarioController');
+Route::get('descargar-productos', 'IngresoController@pdf')->name('compras.ingreso.pdf');
 
 
 Route::auth();

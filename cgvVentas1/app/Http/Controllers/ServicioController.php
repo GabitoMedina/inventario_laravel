@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Input;
 use cgvVentas\Http\Requests\ServicioFormRequest;
 use cgvVentas\Servicio;
 use cgvVentas\DetalleServicio;
+
 use DB;
 use Carbon\Carbon;
 use Reponse;
@@ -26,29 +27,12 @@ class ServicioController extends Controller
     {
         if ($request)
         {
-            $query=trim($request->get('searchText'));
-            $servicios=DB::table('servicio as s')
-            ->join('persona as p','s.idcliente','=','p.idpersona')
-            ->join('detalle_servicio as ds','s.idservicio','=','ds.idservicio')
-            ->select('s.idservicio','s.fecha','p.nombre','s.tipo_comprobante','s.num_comprobante','s.iva','s.estado','s.total_venta')
-            ->where('s.num_comprobante','LIKE','%'.$query.'%')
-            ->orderBy('s.idservicio','desc')
-            ->groupBy('s.idservicio','s.fecha','p.nombre','s.tipo_comprobante','s.num_comprobante','s.iva','s.estado')
-            ->paginate(7);
-            return view('servicios.index',["servicios"=>$servicios,"searchText"=>$query]);
+            
          }
     }
     public function create()
     {
-        $personas=DB::table('persona')->where('tipo_persona','=','Cliente')->get();
-        $articulos = DB::table('articulo as art')
-        ->join('detalle_servicio as ds','art.idarticulo','=','dv.idarticulo')
-        ->select(DB::raw('CONCAT(art.idarticulo, " ",art.nombre) AS articulo'),'art.idarticulo','art.stock',DB::raw('avg(dv.precio_venta)as precio_promedio'))
-        ->where('art.estado','=','Activo')
-        ->where('art.stock','>','0')
-        ->groupBy('articulo','art.idarticulo','art.stock')
-        ->get();
-        return view("ventas.venta.create",["personas"=>$personas,"articulos"=>$articulos]);
+        
     }
 
      public function store (VentaFormRequest $request)
