@@ -47,7 +47,82 @@
 			</div>
 		</div>
 	</div>	
-	
+
+	<table border="1" align="center">
+<tr>
+       <td> Nombre</td>
+       <td><input name="nombre" type="text" size="35" maxlength="35">
+
+    </tr>
+<tr>
+       <td> Apellido Paterno</td>
+       <td><input name="apellidoP" type="text" size="120" maxlength="35">
+
+    </tr>
+<tr>
+       <td> Apellido Materno</td>
+       <td><input name="apellidoM" type="text" size="35" maxlength="35">
+
+    </tr>
+
+   
+       <tr><td size="120">Detalles</td></tr>
+       
+    
+
+<tr>
+       <td> E-mail</td>
+       <td><input name="email" type="text" size="35" maxlength="35">
+       	<tr>
+       		<td>Telf</td>
+       	</tr>
+
+    </tr>
+<tr>
+         <td> Edad </td>
+         <td><input name="edad" type="text" size="2" maxlength="2">
+    </tr>
+<tr >
+         <td> Sexo </td>
+         <td>
+      <input  type="radio" name="rd">Masculino
+      <input type="radio" name="rd">Femenino
+      <input type="button" name="enviar" title="enviar" value="Enviar">
+        </td>
+    
+     </tr>
+</table>
+
+<table id="detalles" class="table table-stiped table-bordered table-condensed table-hover">
+							<thead style="background-color: teal">
+								<th>Opciones</th>
+								<th>Articulo</th>
+								<th>Cantidad</th>				
+								<th>P Venta</th>
+								<th>Descuento</th>
+								<th>Subtotal</th>
+								
+							</thead>
+
+							<tbody>
+								
+							</tbody>
+
+							<tfoot>
+								<th>
+									<tr>
+										<td>nombre<input type="text" name="opc"></td>
+									</tr>
+								</th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th>TOTAL</th>
+								<th><h4 id="total">$ 0.00</h4> <input type="hidden" name="total_venta" id="total_venta"></th>
+								
+							</tfoot>
+							
+						</table>	
 		<div class="row">
 			<div class="panel panel-primary">
 				<div class="panel-body">
@@ -115,11 +190,11 @@
 							</tbody>
 
 							<tfoot>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
 								<th>TOTAL</th>
-								<th></th>
-								<th></th>
-								<th></th>
-								<th></th>
 								<th><h4 id="total">$ 0.00</h4> <input type="hidden" name="total_venta" id="total_venta"></th>
 								
 							</tfoot>

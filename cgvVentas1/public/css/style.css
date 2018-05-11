@@ -25,6 +25,24 @@ body {
   font-size: 14px; 
   font-family: SourceSansPro;
 }
+#table {
+
+font: 75%/1.5em arial, geneva, sans-serif;
+border-collapse: collapse;
+
+}
+
+#td {
+border-bottom: 8px solid #fff;
+border-left: 1px dotted #fff;
+vertical-align: top;
+padding: 20px;
+border-style:groove;
+}
+
+#tr {
+background: #b6e5ff; 
+}
 
 header {
   padding: 10px 0;
